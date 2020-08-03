@@ -1,0 +1,51 @@
+th.mat-header-cell {
+  font-size: 1.1em;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+  vertical-align: middle;
+  padding: 1em;
+}
+
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+  width: 2em;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+td.mat-cell:first-of-type {
+  padding-top: 0.6em;
+}
+
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type,
+th.mat-header-cell:last-of-type {
+  padding: 0em;
+  text-align: center;
+}
+
+th.mat-cell:last-of-type {
+  width: 8em;
+}
+
+th.mat-header-cell:last-of-type {
+  padding-left: 2em;
+}
+
+tr.highlighted {
+  box-shadow: inset 0em 0em 1em 0em rgba(0, 255, 0, 0.2);
+}
+
+tr.mat-row:hover {
+  box-shadow: inset 0em 0em 1em 0em rgba(0, 0, 255, 0.2);
+}
+
+table.table {
+  margin: 1em;
+  width: calc(100% - 2em);
+}

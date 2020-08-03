@@ -1,0 +1,52 @@
+<div class="col-sm-12 pt-2">
+    <div class="col-md-12">
+        <mat-form-field style="float:left; margin:1em 0em 0em 1em;">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+        <button type="button" class="btn btn-info" (click)="onClickAddTodo()"
+            style="float:right; margin: 1.5em 1em;">Add
+            new</button>
+        <div class="mat-elevation-z8" (window:resize)="onResize()">
+            <table mat-table [dataSource]="mtdtodos" matSort class="table table-bordered table-striped">
+                <!-- style="margin:1em; width: calc(100% - 2em);"> -->
+
+                <ng-container matColumnDef="done">
+                    <th mat-header-cell *matHeaderCellDef> <i class="fas fa-check"></i>
+                    </th>
+                    <td mat-cell *matCellDef="let todo">
+                        <mat-checkbox [checked]="todo.done" (change)="setDone($event.checked,todo)" color="warn">
+                        </mat-checkbox>
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                    <td mat-cell *matCellDef="let todo"> {{todo.title}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="deadline">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Deadline </th>
+                    <td mat-cell *matCellDef="let todo"> {{todo.deadline}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="content">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Content Overview </th>
+                    <td mat-cell *matCellDef="let todo"> {{generateOverview(todo.content)}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                    <td mat-cell *matCellDef="let todo"> <button type="button" class="btn btn-info btn-sm mr-2"
+                            (click)="onClickEditTodoDetail(todo.id)">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm"
+                            (click)="onClickTodoDelete(todo)">Delete</button> </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let todo; columns: displayedColumns;" [ngClass]="{highlighted: todo.done}">
+                </tr>
+            </table>
+            <mat-paginator #paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize"></mat-paginator>
+        </div>
+    </div>
+</div>
